@@ -277,26 +277,6 @@ Use the environment's direct Python path if it is not activated. Pulling updates
 
 Newer Python releases may need different binary package builds; use 3.12 for this documented installation.
 
-## Tests and dissertation provenance
-
-```bash
-python -m unittest -v test_population.py
-```
-
-Known-answer synthetic tests check partial-cell weighting, adjacent-zone conservation, overlap rejection, extent rejection, and all-NoData rejection. GitHub Actions runs them on Windows, macOS, and Linux. CI results establish cross-platform execution; local Windows success alone does not verify macOS.
-
-The dissertation script exported an existing QGIS `_sum` through `iface.activeLayer()` rather than calculating the raster sums. It had a variable typo and an old hard-coded path. Its saved CSV matches the shapefile sums: **20 wards and 45,006.323477 people**. Fractional extraction from the saved full Lagos raster gave **45,449.112819**, about 0.984% higher; clipping/grid alignment affected other saved rasters. These are historical methodological checks, not current population figures. Original dissertation files were not modified.
-
-A local Windows run using Nigeria population v3.0 and Ogun wards v3.0 downloaded on 3 October 2026 produced:
-
-| Area | Estimated 2025 population |
-|---|---:|
-| Abeokuta North | 461,617.52 |
-| Abeokuta South | 428,543.79 |
-| Combined administrative study area | 890,161.31 |
-
-31 ward zones were calculated. Ward sums matched the combined union and the two LGA sums. The figures allocate 2025 population to selected 2026 operational boundaries. Exact reproduction requires identical files and method; upstream boundary refreshes can change results.
-
 ## Sources and attribution
 
 - [Nigeria population downloads](https://data.worldpop.org/repo/wopr/NGA/population/v3.0/).
