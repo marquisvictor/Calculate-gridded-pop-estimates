@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+data/
+results/
+legacy_review/
+plot_cache/
+*.part
+*.tif
+*.tiff
+*.zip
